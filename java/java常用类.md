@@ -6,6 +6,7 @@
 *	new+构造器方式   此时对象保存的地址值是数据在堆空间中开辟空间以后对应的地址值
 String s=new String("abc")在内存中创建了两个对象，一个是堆空间的new结构，另一个是char[]对应的常量池中的数据。
 - 常量与常量的拼接结果在常量池中，且各异。只要其中有一个结果是变量，则结果在堆中，若拼接结果调用intern()方法，则结果保存在常量池中。
+- jdk 1.7:字符串常量池存储在堆空间  jdk 1.8：字符串常量池存储在方法区
 ## 字符串的常用方法：
 *	int indexOf(String str)  返回指定字符串在字符串第一次出现的索引
 *	boolean contains(Char s)  若包含指定的char值序列，返回true
@@ -19,21 +20,22 @@ String s=new String("abc")在内存中创建了两个对象，一个是堆空间
 *	String->byte[]    调用String的getBytes()  编码  字符串->字节   数据转换成二进制数据
 *	byte[]->String    调用String的构造器
 *	解码  字节->字符串    二进制数据转换成数据
-##StringBuffer源码
+## StringBuffer源码
 事先在底层进行长度为16的char[]型数组，若要添加的数据底层数组盛不下，则需要扩容底层的数组，默认情况是扩容为原来容量*2+2,同时将原有数组的元素复制到新的数组。
-##方法链原理
+## 方法链原理
 返回当前对象，可以继续执行当前方法。
 	public StringBuffer append(String str){
 		super.append(str);
 		return this;
 	}
-#9.执行效率比较：StringBuidler>StringBuffer>String
-#10.Date类  使用new Date()构造器，调用toString()方法，来显示当前的年月日时分秒。调用getTime()方法，获取当前的Date对象对应的毫秒数。
-#11.将java.util.Date对象转换为java.sql.Date对象
+- 执行效率比较：StringBuidler>StringBuffer>String
+
+# Date类  
+使用new Date()构造器，调用toString()方法，来显示当前的年月日时分秒。调用getTime()方法，获取当前的Date对象对应的毫秒数。
+- 将java.util.Date对象转换为java.sql.Date对象
 	Date data=new Date();
 	java.sql.Date data_new=new java.sql.Date(data.getTime());
-#12.jdk 1.7:字符串常量池存储在堆空间  jdk 1.8：字符串常量池存储在方法区
-#13.SimpleDateFormat的使用
+- SimpleDateFormat的使用
 *	格式化：日期->字符串
 #
 	SimpleDateFormat simple=new SimpleDateFormat();
