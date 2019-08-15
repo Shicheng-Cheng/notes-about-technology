@@ -88,6 +88,7 @@ Target:用于指定被修饰的Annotation能用于修饰哪些元素(类，方�
 
 # 比较类
 - 比较类：重写CompareTo方法
+#
 	publi int CompareTo(Object o){
 	if(o instanceof Good){
 		Good good=(Good) o;
@@ -103,8 +104,10 @@ Target:用于指定被修饰的Annotation能用于修饰哪些元素(类，方�
 	}
 
 或者可以写成
+#
 	public Double.compare(this.price,good.price);
 - comparator接口：当元素类型未实现comparable接口，又不方便修改代码，或者接口规则不合适，则考虑使用对象排序。
+#
 	Arrays.sort(arr,new Comparator(){
 		public int compare(Object o1,Objecto2){
 			if(o1 instanceof String && o2 instanceof String){
