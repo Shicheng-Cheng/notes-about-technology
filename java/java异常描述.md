@@ -14,6 +14,6 @@
 - 可以使用throw new Exception进行手动抛出异常，在方法的声明处在进行throws处理，在主程序处用try-catch处理。
 - 自定义异常类：继承于现有的异常结构，RuntimeException,Exception，提供一个全局常量，static final long serialVersionUID。提供重载的构造器。
 - throws和throw的区别：
-  *	throws用在方法声明后面,表示抛出异常，由方法的调用者即上一级来处理，而throw用在方法体内，用来制造一个异常。
-  *	throws是声明该异常，以便调用者去捕捉该异常，而throw是直接抛出异常实例。
-  *	throws表示异常出现的一种可能性，而throw就表示一定会出现该异常。
+  - throws用在方法声明后面,表示抛出异常，由方法的调用者即上一级来处理，而throw用在方法体内，用来制造一个异常。
+  - throws是声明该异常，以便调用者去捕捉该异常，而throw是直接抛出异常实例。
+  - throws表示异常出现的一种可能性，而throw就表示一定会出现该异常。
