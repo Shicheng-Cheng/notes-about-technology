@@ -35,6 +35,9 @@ String s=new String("abc")在内存中创建了两个对象，一个是堆空间
 - 将java.util.Date对象转换为java.sql.Date对象
 	Date data=new Date();
 	java.sql.Date data_new=new java.sql.Date(data.getTime());
+
+- Calendar类：实例化，调用其静态方法getInstance()。
+- JDK1.8的时间API：LocalDate,LocalTime,LocalDateTime
 - SimpleDateFormat的使用
 *	格式化：日期->字符串
 #
@@ -51,44 +54,40 @@ String s=new String("abc")在内存中创建了两个对象，一个是堆空间
 	SimpleDateFormat simple=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	String str=simple.format(date);
 
-#14.Calendar类：实例化，调用其静态方法getInstance()。
-#15.JDK1.8的时间API：LocalDate,LocalTime,LocalDateTime
 
 
-----------
-#1.枚举类的使用：类的对象有限个，确定的，或者当需要定义一组常量。若枚举类中只有一个对象，则可以作为单例模式的实现。
-#2.自定义枚举类：
+# 枚举类
+- 枚举类的使用：类的对象有限个，确定的，或者当需要定义一组常量。若枚举类中只有一个对象，则可以作为单例模式的实现。
+- 自定义枚举类：
 *	声明枚举类的对象属性，用private final修饰
 *	私有化类的构造器，给对象进行赋值
 *	提供当前枚举类的多个对象，用public static final进行修饰
-#3.enum修饰
+- enum修饰
 *	提供当前枚举类的对象，用逗号隔开，末尾对象使用分号结尾
 *	声明对象属性  (同上)
 *	私有化类的构造器  (同上)
-#4.枚举类的常用方法：
+- 枚举类的常用方法：
 *	values()方法：返回枚举类型的对象数组
 *	重写toString()方法
 *	valueOf()方法：将字符串转换为对应的枚举类对象
-#5.使用枚举类实现接口：可实现接口的抽象方法，也可以在枚举类对象中实现抽象方法。
+- 使用枚举类实现接口：可实现接口的抽象方法，也可以在枚举类对象中实现抽象方法。
 
-
-----------
-#1.注解的使用实例
+# 注解
+- 注解的使用实例
 *	生成文档相关的注解
 *	在编译时进行格式检查
 *	跟踪代码依赖性，实现替代配置文件功能
-#2.自定义注解
+- 自定义注解
 使用@interface关键字，Annotation的成员变量在定义中以无参数方法的形式来声明，其方法名和返回值定义了该成员的名字和类型。称之为配置参数。类型只能是八种基本数据类型，String类型等，如果只有一个参数成员，建议使用参数名为value。若定义的注解中含有配置参数，则使用的时候必须指定参数值，即value=""。
 注意：自定义注解需要配上注解的信息处理流程（使用反射）才有意义。
-#3.元注解：对现有注解进行解释说明
+- 元注解：对现有注解进行解释说明
 Retention：指定所修饰的Annotation的生命周期，SOURCE/CLASS/RUNTIME，只有声明为RUNTIME生命周期的注解，才能被反射所获取。
 Target:用于指定被修饰的Annotation能用于修饰哪些元素(类，方法，构造器)
-#4.可重复注解：在所声明的注解上声明@Repeatable，成员值为MyAnnotation.class。
-#5.类型注解：ElementType.TYPE_PARAMETER 表示注解可以写在类型变量的声明语句中，比如泛型。TYPE_USE 表示注解可以写在使用类型的任何语句中。
+- 可重复注解：在所声明的注解上声明@Repeatable，成员值为MyAnnotation.class。
+- 类型注解：ElementType.TYPE_PARAMETER 表示注解可以写在类型变量的声明语句中，比如泛型。TYPE_USE 表示注解可以写在使用类型的任何语句中。
 
-
-----------
-#1.比较类：重写CompareTo方法
+# 比较类
+- 比较类：重写CompareTo方法
 	publi int CompareTo(Object o){
 	if(o instanceof Good){
 		Good good=(Good) o;
@@ -102,9 +101,10 @@ Target:用于指定被修饰的Annotation能用于修饰哪些元素(类，方�
 		}
 		}
 	}
-#或者可以写成
+
+或者可以写成
 	public Double.compare(this.price,good.price);
-#2.comparator接口：当元素类型未实现comparable接口，又不方便修改代码，或者接口规则不合适，则考虑使用对象排序。
+- comparator接口：当元素类型未实现comparable接口，又不方便修改代码，或者接口规则不合适，则考虑使用对象排序。
 	Arrays.sort(arr,new Comparator(){
 		public int compare(Object o1,Objecto2){
 			if(o1 instanceof String && o2 instanceof String){
@@ -115,4 +115,4 @@ Target:用于指定被修饰的Annotation能用于修饰哪些元素(类，方�
 			 new RuntimeException("输入类型不一致");
 			}
 		});
-#3.Comparable接口的方式一旦确定，保证Comparable接口实现类的对象在任何位置都可以比较大小，而Comparator接口属于临时性的比较。
+- Comparable接口的方式一旦确定，保证Comparable接口实现类的对象在任何位置都可以比较大小，而Comparator接口属于临时性的比较。
