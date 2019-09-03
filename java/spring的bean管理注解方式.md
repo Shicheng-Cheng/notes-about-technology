@@ -9,9 +9,9 @@
 #### 属性的注解方式
 - 类的属性不设置get和set方法，可以在属性上添加注解@Value("xxx")
 - 使用@Autowired进行自动注入 
-- 1.默认按照类型进行注入：若存在两个相同bean类型相同，则按照名称注入
-- 2.@Autowired注入时可以针对成员变量或者set方法：通过required属性，设置一定找到匹配的bean，并使用@Qualifier指定注入Bean的名称，此时该名称需要与所要引用的@Repository的名称保持一致。
-- 3.@Resource(name="")可以代替@Autowired和@Qualifier一起使用的情况。
+  - 默认按照类型进行注入：若存在两个相同bean类型相同，则按照名称注入
+  - @Autowired注入时可以针对成员变量或者set方法：通过required属性，设置一定找到匹配的bean，并使用@Qualifier指定注入Bean的名称，此时该名称需要与所要引用的@Repository的名称保持一致。
+  - @Resource(name="")可以代替@Autowired和@Qualifier一起使用的情况。
 #### 其他注解
 
 spring可以在创建和拆卸bean时调用bean的两个生命周期方法
@@ -35,10 +35,17 @@ spring可以在创建和拆卸bean时调用bean的两个生命周期方法
 
 在xml文件中配置类的bean实体，然后利用注解对bean实体进行属性注入，不需要设置set方法。
 
-- 在xml
+- 在xml文件中添加配置
 
   ```xml
-  context: annotation-config/&gt;-
+  <context: annotation-config/>
   ```
 
-- 在bean实体中，在对应的类属性对象上添加注解@Resource(name="xml中bean的名字")
+- 在bean实体中，在对应的类属性对象上添加注解
+
+  ```xml
+  @Resource(name="xml中bean的名字")
+  ```
+
+  
+
